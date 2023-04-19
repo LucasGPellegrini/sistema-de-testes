@@ -6,19 +6,19 @@ Sistema parcialmente desenvolvido para a disciplina de Engenharia de Software na
 
 ### Tela de Login
 
-![](../imagens/loginscreen.png)
+![](https://github.com/LucasGPellegrini/sistema-de-testes/blob/main/imagens/loginscreen.png)
 
 ---
 
 ### Tela Principal User
 
-![](/home/lucas/Imagens/screenshots/mainscreen.png)
+![](https://github.com/LucasGPellegrini/sistema-de-testes/blob/main/imagens/mainscreen.png)
 
 ---
 
 ### Tela Principal Admin
 
-![](/home/lucas/Imagens/screenshots/adminmainscreen.png)
+![](https://github.com/LucasGPellegrini/sistema-de-testes/blob/main/imagens/adminmainscreen.png)
 
 ---
 
