@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo.SecondaryController">
+    <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: CORNSILK;">
+         <children>
+            <BorderPane prefHeight="400.0" prefWidth="640.0">
+               <left>
+                  <AnchorPane fx:id="slidePane" prefHeight="360.0" prefWidth="160.0" style="-fx-background-color: bisque;" BorderPane.alignment="CENTER">
+                     <children>
+                          <Label fx:id="olaTxt" layoutX="14.0" layoutY="49.0" text="Seu Nome" underline="true">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Label>
+                          <Button fx:id="secondaryButton" layoutX="13.0" layoutY="323.0" onAction="#switchToPrimary" style="-fx-background-color: CORNFLOWERBLUE; -fx-cursor: hand;" text="Logout" />
+                        <Label layoutX="14.0" layoutY="32.0" text="Olá," />
+                        <Button fx:id="criaUsrBtn" layoutX="11.0" layoutY="106.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Criar Usuário" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cadUsrBtn" layoutX="11.0" layoutY="139.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Cadastrar Usuário" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cadEqpBtn" layoutX="11.0" layoutY="172.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Cadastrar Equipe" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="gerEqpBtn" layoutX="11.0" layoutY="206.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Gerenciar Equipe" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="atribTesteBtn" layoutX="11.0" layoutY="239.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Atribuir um Teste" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="criaCTBtn" layoutX="21.0" layoutY="116.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Criar Caso de Teste" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="gerCTBtn" layoutX="21.0" layoutY="149.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Ger. Caso de Teste" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="gerExTesteBtn" layoutX="21.0" layoutY="182.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Ger. Execução de Teste" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="criaPTBtn" layoutX="21.0" layoutY="216.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Criar Plano" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="alocPTBtn" layoutX="21.0" layoutY="249.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Alocar Plano" visible="false">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <AnchorPane prefHeight="30.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="barBtn" layoutY="4.0" mnemonicParsing="false" onAction="#correMenu" prefHeight="28.0" prefWidth="40.0" style="-fx-background-color: NULL; -fx-cursor: hand;" visible="false">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/menuicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="dashBtn" layoutX="160.0" layoutY="4.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Dashboard">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/dashicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button layoutX="290.0" layoutY="4.0" mnemonicParsing="false" prefWidth="120.0" stylesheets="@styles.css" text="Equipes">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/teamicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button layoutX="420.0" layoutY="4.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Mensagens">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/msgicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="hideBarBtn" layoutY="3.0" mnemonicParsing="false" onAction="#someMenu" prefHeight="28.0" prefWidth="40.0" style="-fx-background-color: NULL; -fx-cursor: hand;">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/closeicon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="480.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+    </children>
+</VBox>
