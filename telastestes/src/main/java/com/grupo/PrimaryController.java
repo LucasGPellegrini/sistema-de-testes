@@ -29,17 +29,16 @@ public class PrimaryController {
     	String username = usernametxtfield.getText();
     	boolean isAdmin = admbutton.isSelected();
     	
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));	
-		root = loader.load();	
+	FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));	
+	root = loader.load();	
 
-		SecondaryController secondaryController = loader.getController();
-		secondaryController.mostraNome(username, isAdmin);
+	SecondaryController secondaryController = loader.getController();
+	secondaryController.mostraNome(username, isAdmin);
 
-        //App.setRoot("secondary");
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	scene = new Scene(root);
+	stage.setScene(scene);
+	stage.show();
 
     }
     

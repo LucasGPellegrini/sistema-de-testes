@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo.SecondaryController">
     <children>
@@ -88,7 +92,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button fx:id="dashBtn" layoutX="160.0" layoutY="4.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Dashboard">
+                        <Button fx:id="dashBtn" layoutX="160.0" layoutY="4.0" mnemonicParsing="false" onAction="#mostraDashb" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Dashboard">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -96,7 +100,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button layoutX="290.0" layoutY="4.0" mnemonicParsing="false" prefWidth="120.0" stylesheets="@styles.css" text="Equipes">
+                        <Button layoutX="290.0" layoutY="4.0" mnemonicParsing="false" onAction="#mostraEquipe" prefWidth="120.0" stylesheets="@styles.css" text="Equipes">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -104,7 +108,7 @@
                                  </image>
                               </ImageView>
                            </graphic></Button>
-                        <Button layoutX="420.0" layoutY="4.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Mensagens">
+                        <Button layoutX="420.0" layoutY="4.0" mnemonicParsing="false" onAction="#mostraMsg" prefHeight="28.0" prefWidth="120.0" stylesheets="@styles.css" text="Mensagens">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -125,7 +129,42 @@
                   </AnchorPane>
                </top>
                <center>
-                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="480.0" BorderPane.alignment="CENTER" />
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="480.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="dashbPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="480.0">
+                           <children>
+                              <Text layoutX="27.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Progresso" textAlignment="CENTER" wrappingWidth="201.83246612548828">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="pegaTesteBox" layoutX="240.0" layoutY="148.0" prefHeight="26.0" prefWidth="197.0" promptText="Selecione um Teste" styleClass="button" stylesheets="@styles.css" />
+                              <Button layoutX="240.0" layoutY="198.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" stylesheets="@styles.css" text="Gerar Relatório" />
+                              <ProgressIndicator fx:id="testProgress" layoutX="27.0" layoutY="148.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" progress="0.0" />
+                              <Text layoutX="33.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Testes Concluídos" wrappingWidth="81.95075225830078" />
+                              <Text fill="#4c4646" layoutX="114.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="÷">
+                                 <font>
+                                    <Font size="44.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="145.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Testes  em Andamento" wrappingWidth="81.95075225830078" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="equipePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="480.0" visible="false">
+                           <children>
+                              <Text layoutX="35.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suas Equipes" textAlignment="CENTER" wrappingWidth="215.81860733032227">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="mandarMsgBtn" layoutX="276.0" layoutY="295.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="190.0" stylesheets="@styles.css" text="Mandar Mensagem">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font></Button>
+                              <TreeView fx:id="equipesList" layoutX="30.0" layoutY="71.0" onContextMenuRequested="#selectItem" onMouseClicked="#selectItem" prefHeight="256.0" prefWidth="226.0" />
+                           </children></AnchorPane>
+                        <AnchorPane fx:id="msgPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="480.0" visible="false" />
+                     </children></AnchorPane>
                </center>
             </BorderPane>
          </children>
