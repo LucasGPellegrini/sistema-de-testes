@@ -44,4 +44,8 @@ Existem 3 subtelas na tela principal: Dashboard, Equipes e Mensagens, das quais:
 
 ##### Mensagens
 
-YET TODO!
+![](https://github.com/LucasGPellegrini/sistema-de-testes/blob/main/imagens/msgscreen.png)
+
+Tela de mensagens **completamente hardcoded**.
+
+Até porque esta parte da aplicação **NÃO** será implementada.

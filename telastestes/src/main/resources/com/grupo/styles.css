@@ -28,3 +28,29 @@
     -fx-background-color: #0093ff;
     -fx-text-fill: white;
 }
+
+.text-area .scroll-bar:vertical {
+    -fx-pref-width: 1;
+    -fx-opacity: 0;
+}
+.text-area .scroll-bar:horizontal {
+    -fx-pref-height: 1;
+    -fx-opacity: 0;
+}
+
+#msgsent {
+    text-area-background: SPRINGGREEN ;
+}
+
+#msgsent .content {
+    -fx-background-color: text-area-background ;
+}
+
+#msgrecived {
+    text-area-background: WHITE ;
+    border-width : 0;
+}
+
+#msgrecived .content {
+    -fx-background-color: text-area-background ;
+}

@@ -26,6 +26,8 @@ public class SecondaryController implements Initializable{
 
     @FXML
     Label olaTxt;
+    @FXML
+    Label userTxt;
 	
     @FXML
     Button barBtn;
@@ -157,6 +159,7 @@ public class SecondaryController implements Initializable{
                 criaPTBtn.setVisible(true);
                 alocPTBtn.setVisible(true);
     	}
+        userTxt.setText(username);
     }
     
     @FXML
