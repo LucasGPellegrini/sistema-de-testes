@@ -12,7 +12,7 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 
-public class PrimaryController {
+public class LoginController {
 	
 	@FXML
 	TextField usernametxtfield;
@@ -29,10 +29,10 @@ public class PrimaryController {
     	String username = usernametxtfield.getText();
     	boolean isAdmin = admbutton.isSelected();
     	
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));	
+	FXMLLoader loader = new FXMLLoader(getClass().getResource("telaPrincipal.fxml"));	
 	root = loader.load();	
 
-	SecondaryController secondaryController = loader.getController();
+	PrincipalController secondaryController = loader.getController();
 	secondaryController.mostraNome(username, isAdmin);
 
 	stage = (Stage)((Node)event.getSource()).getScene().getWindow();

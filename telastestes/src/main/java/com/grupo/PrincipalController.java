@@ -22,12 +22,10 @@ import javafx.scene.control.TreeItem;
 import javafx.util.Duration;
 
 
-public class SecondaryController implements Initializable{
+public class PrincipalController implements Initializable{
 
     @FXML
     Label olaTxt;
-    @FXML
-    Label userTxt;
 	
     @FXML
     Button barBtn;
@@ -46,8 +44,6 @@ public class SecondaryController implements Initializable{
     @FXML
     Button gerCTBtn;
     @FXML
-    Button gerExTesteBtn;
-    @FXML
     Button criaPTBtn;
     @FXML
     Button alocPTBtn;
@@ -61,10 +57,12 @@ public class SecondaryController implements Initializable{
     @FXML
     AnchorPane equipePane;
     @FXML
-    AnchorPane msgPane;
+    AnchorPane planPane;
        
     @FXML
     TreeView equipesList;
+    @FXML
+    TreeView planosList;
     
     @FXML
     private ProgressIndicator testProgress;
@@ -113,11 +111,51 @@ public class SecondaryController implements Initializable{
         rootItem.getChildren().addAll(branchItem1, branchItem2, branchItem3);
         equipesList.setRoot(rootItem);
         
+        // PLANOS
+        //TODO: TERMOS ABAIXO NÃO DEVEM SER SETADOS ESTATICAMENTE (exceto root)
+        TreeItem<String> rootPlano = new TreeItem<>("Projetos");
+        // Equipes?
+        TreeItem<String> branchProj1 = new TreeItem<>("Projeto 01");
+        TreeItem<String> branchProj2 = new TreeItem<>("Projeto 02");
+        TreeItem<String> branchP1 = new TreeItem<>("Plano: Operações Básicas");
+        TreeItem<String> branchP2 = new TreeItem<>("Plano: Operações Seg. Grau");
+        TreeItem<String> branchP3 = new TreeItem<>("Plano: Chamadas de Sistema");
+
+        // Membros
+        TreeItem<String> leafP1 = new TreeItem<>("Caso: fx:add");
+        TreeItem<String> leafP2 = new TreeItem<>("Caso: fx:sub");
+        TreeItem<String> leafP3 = new TreeItem<>("Caso: fx:mult");
+        TreeItem<String> leafP4 = new TreeItem<>("Caso: fx:div");
+        
+        TreeItem<String> leafP5 = new TreeItem<>("Caso: fx:bhaskara");
+        TreeItem<String> leafP6 = new TreeItem<>("Caso: fx:soma_e_produto");
+        TreeItem<String> leafP7 = new TreeItem<>("Caso: fx:aprox_linear");
+        
+        TreeItem<String> leafP8 = new TreeItem<>("Caso: fx:get_proc_data");
+        TreeItem<String> leafP9 = new TreeItem<>("Caso: fx:sys_shutdown");
+        
+
+        
+        branchP1.getChildren().addAll(leafP1, leafP2,leafP3, leafP4);
+        branchP2.getChildren().addAll(leafP5,leafP6, leafP7);
+        branchP3.getChildren().addAll(leafP8,leafP9);
+        branchProj1.getChildren().addAll(branchP1, branchP2);
+        branchProj2.getChildren().addAll(branchP3);
+        rootPlano.getChildren().addAll(branchProj1, branchProj2);
+        planosList.setRoot(rootPlano);
+        
     }
 
 
     public void selectItem() {
 	TreeItem<String> item = (TreeItem<String>) equipesList.getSelectionModel().getSelectedItem();
+	if(item != null) {
+        	System.out.println(item.getValue());
+	}
+    }
+    
+    public void selectPlano() {
+	TreeItem<String> item = (TreeItem<String>) planosList.getSelectionModel().getSelectedItem();
 	if(item != null) {
         	System.out.println(item.getValue());
 	}
@@ -135,7 +173,7 @@ public class SecondaryController implements Initializable{
     @FXML
     private void switchToPrimary(ActionEvent event) throws IOException {
         //App.setRoot("primary");
-    	Parent root = FXMLLoader.load(getClass().getResource("primary.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("telaLogin.fxml"));
     	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	scene = new Scene(root);
     	stage.setScene(scene);
@@ -155,30 +193,28 @@ public class SecondaryController implements Initializable{
     		olaTxt.setText(username);
                 criaCTBtn.setVisible(true);
                 gerCTBtn.setVisible(true);
-                gerExTesteBtn.setVisible(true);
                 criaPTBtn.setVisible(true);
                 alocPTBtn.setVisible(true);
     	}
-        userTxt.setText(username);
     }
     
     @FXML
     public void mostraDashb(ActionEvent event) throws IOException {
         dashbPane.setVisible(true);
         equipePane.setVisible(false);
-        msgPane.setVisible(false);
+        planPane.setVisible(false);
     }
     
     @FXML
     public void mostraEquipe(ActionEvent event) throws IOException {
         equipePane.setVisible(true);
         dashbPane.setVisible(false);
-        msgPane.setVisible(false);
+        planPane.setVisible(false);
     }
     
     @FXML
-    public void mostraMsg(ActionEvent event) throws IOException {
-        msgPane.setVisible(true);
+    public void mostraPlanos(ActionEvent event) throws IOException {
+        planPane.setVisible(true);
         dashbPane.setVisible(false);
         equipePane.setVisible(false);
     }
