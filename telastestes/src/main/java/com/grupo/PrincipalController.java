@@ -252,5 +252,15 @@ public class PrincipalController implements Initializable{
     	});
     }
     
+    @FXML
+    private void switchToCadUsr(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("telaCadUsr.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
 
 }

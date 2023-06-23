@@ -28,12 +28,12 @@
                         </Label>
                           <Button fx:id="secondaryButton" layoutX="13.0" layoutY="323.0" onAction="#switchToPrimary" style="-fx-background-color: CORNFLOWERBLUE; -fx-cursor: hand;" text="Logout" />
                         <Label layoutX="14.0" layoutY="32.0" text="Olá," />
-                        <Button fx:id="criaUsrBtn" layoutX="21.0" layoutY="107.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Criar Usuário" visible="false">
+                        <Button fx:id="criaUsrBtn" layoutX="21.0" layoutY="107.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Criar Tipo Usuário" visible="false">
                            <font>
                               <Font size="9.0" />
                            </font>
                         </Button>
-                        <Button fx:id="cadUsrBtn" layoutX="21.0" layoutY="140.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Cadastrar Usuário" visible="false">
+                        <Button fx:id="cadUsrBtn" layoutX="21.0" layoutY="140.0" mnemonicParsing="false" onAction="#switchToCadUsr" prefHeight="15.0" prefWidth="120.0" stylesheets="@styles.css" text="Cadastrar Usuário" visible="false">
                            <font>
                               <Font size="9.0" />
                            </font>
