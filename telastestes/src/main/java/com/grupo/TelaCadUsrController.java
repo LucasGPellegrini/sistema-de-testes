@@ -51,10 +51,9 @@ public class TelaCadUsrController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         CBoxTipoUsr.getItems().addAll(listaTipos);
-	CBoxTipoUsr.setOnAction(this::getSelectedTipoUsr);
+	    CBoxTipoUsr.setOnAction(this::getSelectedTipoUsr);
         txtInvalido.setVisible(false);
         txtCadastrado.setVisible(false);
-        
     }    
     
     

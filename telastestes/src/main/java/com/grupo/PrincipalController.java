@@ -261,6 +261,15 @@ public class PrincipalController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
-    
+
+    @FXML
+    private void switchToCriaTipo(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("telaCriaTipo.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

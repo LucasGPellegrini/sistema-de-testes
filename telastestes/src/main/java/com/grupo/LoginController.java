@@ -41,5 +41,7 @@ public class LoginController {
 	stage.show();
 
     }
-    
+
+    public static class CriaTipoController {
+    }
 }
