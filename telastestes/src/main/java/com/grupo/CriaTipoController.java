@@ -14,38 +14,59 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.scene.control.TextField;
 
 public class CriaTipoController implements Initializable{
 
     @FXML
-    Button buttonCria = new Button();
+    Button buttonCria;
+    @FXML
+    Button buttonVoltar;
 
     @FXML
-    Button buttonVoltar = new Button();
-
+    TextField txtFieldTitulo;
     @FXML
-    Text txtTitulo = new Text();
-
+    TextField txtFieldPermissoes;
+    
     @FXML
-    Text txtPermissoes = new Text();
+    Text txtCadastrado;
+    @FXML
+    Text txtCampoVazio;
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    public CriaTipoController() {
+        this.buttonCria = new Button();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.buttonCria.setVisible(true);
         this.buttonVoltar.setVisible(true);
-        this.txtPermissoes.setVisible(true);
-        this.txtTitulo.setVisible(true);
+        this.txtCadastrado.setVisible(false);
+        this.txtCampoVazio.setVisible(false);
     }
 
     @FXML
     public void criar(ActionEvent event) throws IOException {
-        if(this.txtPermissoes.getText() != "" && this.txtTitulo.getText() != ""){
-            String Permissoes = this.txtPermissoes.getText();
-            new TipoUsuario(this.txtTitulo.getText(),getPermissions(Permissoes));
+        if(!"".equals(this.txtFieldPermissoes.getText()) && !"".equals(this.txtFieldTitulo.getText())){
+            String Permissoes = this.txtFieldPermissoes.getText();
+            TipoUsuario tipo = new TipoUsuario(this.txtFieldTitulo.getText(),getPermissions(Permissoes));
+            
+            System.out.println("Tipo de Usuário "+tipo.getNome()+" criado!");
+            System.out.println("-----Permissões:------");
+            for(String permissao: tipo.getPermissoes()) {
+                System.out.println("\t"+permissao);
+            }
+            
+            this.txtCadastrado.setVisible(true);
+            this.txtCampoVazio.setVisible(false);
+        }
+        else {
+            this.txtCadastrado.setVisible(false);
+            this.txtCampoVazio.setVisible(true);
         }
     }
 

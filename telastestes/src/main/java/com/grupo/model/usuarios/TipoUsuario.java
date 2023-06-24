@@ -8,6 +8,7 @@ public class TipoUsuario {
     
     public TipoUsuario(String nome, ArrayList<String> permissoes) {
         //VERIFICA_SE_JA_EXISTE_NOME
+        this.permissoes = new ArrayList<>();
         this.nome = nome;
         this.permissoes = permissoes;
     }
