@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo.TelaCriaCaso">
+   <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="741.0" style="-fx-background-color: CORNSILK;">
+      <children>
+         <Text layoutX="213.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar Caso de Teste" textAlignment="CENTER" wrappingWidth="326.81170654296875">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Text>
+         <Text layoutX="56.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
+         <Text layoutX="58.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione a prioridade" />
+         <Text fx:id="txtInvalido" fill="RED" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Inválidos!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
+         <Text fx:id="txtCadastrado" fill="#00ff20" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro Efetivado!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
+         <Button fx:id="buttonVoltar" layoutX="58.0" layoutY="475.0" mnemonicParsing="false" onAction="#fechar" text="Voltar" />
+         <TextArea fx:id="txtDescricao" layoutX="58.0" layoutY="152.0" prefHeight="57.0" prefWidth="612.0" />
+         <Text layoutX="56.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Título" />
+         <TextField fx:id="txtTitulo" layoutX="56.0" layoutY="95.0" prefHeight="25.0" prefWidth="612.0" />
+         <Text layoutX="294.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data limite" />
+         <Text layoutX="520.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data prevista" />
+         <DatePicker fx:id="dataLimite" layoutX="289.0" layoutY="248.0" prefHeight="25.0" prefWidth="150.0" />
+         <DatePicker fx:id="dataPrevista" layoutX="520.0" layoutY="248.0" prefHeight="25.0" prefWidth="150.0" />
+         <Text layoutX="59.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário Responsável" />
+         <Text layoutX="58.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultado esperado" />
+         <TextArea fx:id="txtResultadoEsperado" layoutX="56.0" layoutY="391.0" prefHeight="68.0" prefWidth="627.0" />
+         <Button fx:id="buttonCriar" layoutX="614.0" layoutY="475.0" mnemonicParsing="false" onAction="#cadastrarCaso" prefHeight="25.0" prefWidth="69.0" text="Criar" />
+         <ComboBox fx:id="cBoxPrioridade" layoutX="58.0" layoutY="248.0" prefHeight="25.0" prefWidth="150.0" />
+         <TextField fx:id="textUsuario" layoutX="59.0" layoutY="323.0" />
+         <Button fx:id="buttonCriarRequisito" layoutX="439.0" layoutY="323.0" mnemonicParsing="false" onAction="#fechar" prefHeight="25.0" prefWidth="125.0" text="Criar Requisito" />
+      </children></AnchorPane>
+</AnchorPane>

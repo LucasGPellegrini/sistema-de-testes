@@ -180,6 +180,15 @@ public class PrincipalController implements Initializable{
     	stage.show();
     }
     
+    @FXML
+    private void switchToCriaCaso(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("telaCadCaso.fxml"));
+    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
+    }
+    
     public void mostraNome(String username, boolean adm) {
     	if(adm) {
     		olaTxt.setText("Administrador\n" + username);
