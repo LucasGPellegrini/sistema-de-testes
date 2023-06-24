@@ -7,4 +7,6 @@ module com.grupo {
 
     opens com.grupo to javafx.fxml;
     exports com.grupo;
+    exports com.grupo.bin;
+    opens com.grupo.bin to javafx.fxml;
 }

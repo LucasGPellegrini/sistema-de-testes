@@ -42,7 +42,7 @@ public abstract class Cliente {
         }
 
         if((!Objects.equals(clientType, "usuario") && !Objects.equals(clientType, "administrador"))){
-            System.out.println("Tipo de cliente Inválido");
+            System.out.println("Tipo de cliente Inválido ao realizar a autenticação");
             return null;
         }
 
