@@ -1,5 +1,6 @@
 package com.grupo;
 
+import com.grupo.model.usuarios.Cliente;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,10 @@ import javafx.stage.Stage;
 public class LoginController {
 	
 	@FXML
-	TextField usernametxtfield;
+	TextField logintxtfield;
+
+	@FXML
+	TextField senhatxtfield;
 	
 	@FXML
 	RadioButton admbutton;
@@ -26,20 +30,29 @@ public class LoginController {
 	
     @FXML
     private void switchToSecondary(ActionEvent event) throws IOException {
-    	String username = usernametxtfield.getText();
+    	String login = logintxtfield.getText();
+			String senha = senhatxtfield.getText();
     	boolean isAdmin = admbutton.isSelected();
-    	
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("telaPrincipal.fxml"));	
-	root = loader.load();	
 
-	PrincipalController secondaryController = loader.getController();
-	secondaryController.mostraNome(username, isAdmin);
+			Cliente cliente = Cliente.doLoginAuth(login, senha, (isAdmin ? "administrador" : "usuario"));
 
-	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	scene = new Scene(root);
-	stage.setScene(scene);
-	stage.show();
+			if(cliente == null){
+				System.out.println("Login invalido!");
+			}
+			else{
+				System.out.println((isAdmin ? "administrador" : "usuario") + " " + cliente.getNomeCompleto() + " autenticado!");
 
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("telaPrincipal.fxml"));	
+				root = loader.load();	
+
+				PrincipalController secondaryController = loader.getController();
+				secondaryController.mostraNome(cliente.getNomeCompleto(), isAdmin);
+
+				stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+				scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+			}
     }
 
     public static class CriaTipoController {

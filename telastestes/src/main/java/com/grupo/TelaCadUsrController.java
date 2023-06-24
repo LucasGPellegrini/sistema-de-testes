@@ -75,7 +75,8 @@ public class TelaCadUsrController implements Initializable {
             txtCadastrado.setVisible(false);
         }
         else {
-            Usuario usuario = new Usuario(nome, login, senha);
+            // atenção incompleto aqui falta colocar no bd
+            Usuario usuario = new Usuario(1, nome, login, senha);
             txtCadastrado.setVisible(true);
             txtInvalido.setVisible(false);
         }
