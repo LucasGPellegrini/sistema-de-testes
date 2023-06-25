@@ -3,6 +3,7 @@ package com.grupo;
 import com.grupo.model.testes.CasoDeTeste;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,6 +66,15 @@ public class TelaCriaCaso implements Initializable{
     public void cadastrarCaso(ActionEvent event) throws IOException{
         String titulo = txtTitulo.getText();
         System.out.println(titulo);
+        
+        CasoDeTeste caso = new CasoDeTeste();
+        caso.setDescricao(txtDescricao.getText());
+        caso.setPrioridade(cBoxPrioridade.getValue());
+        caso.setResultadoEsperado(txtResultadoEsperado.getText());
+        caso.setDataLimite(java.sql.Date.valueOf(dataLimite.getValue()));
+        caso.setDataPrevista(java.sql.Date.valueOf(dataPrevista.getValue()));
+        
+        
     }
     
     @FXML

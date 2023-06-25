@@ -182,11 +182,12 @@ public class PrincipalController implements Initializable{
     
     @FXML
     private void switchToCriaCaso(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("telaCadCaso.fxml"));
-    	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    	scene = new Scene(root);
-    	stage.setScene(scene);
-    	stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("telaCadCaso.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 741.0, 568.0);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
     
     public void mostraNome(String username, boolean adm) {

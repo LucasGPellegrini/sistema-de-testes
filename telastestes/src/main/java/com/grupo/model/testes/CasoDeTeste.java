@@ -7,7 +7,7 @@ public class CasoDeTeste {
     private static int id_count = 0;
     private int idCaso;
     private String descricao;
-    private int prioridade;
+    private String prioridade;
     private Date dataCriacao;
     private Date dataLimite;
     private Date dataPrevista;
@@ -25,8 +25,8 @@ public class CasoDeTeste {
     public int getIdCaso() {return idCaso;}
     public String getDescricao() {return descricao;}
     public void setDescricao(String descricao) {this.descricao = descricao;}
-    public int getPrioridade() {return prioridade;}
-    public void setPrioridade(int prioridade) {this.prioridade = prioridade;}
+    public String getPrioridade() {return prioridade;}
+    public void setPrioridade(String prioridade) {this.prioridade = prioridade;}
     public Date getDataCriacao() {return dataCriacao;}
     public void setDataCriacao(Date dataCriacao) {this.dataCriacao = dataCriacao;}
     public Date getDataLimite() {return dataLimite;}

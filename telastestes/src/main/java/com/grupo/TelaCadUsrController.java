@@ -1,8 +1,10 @@
 package com.grupo;
 
+import com.grupo.model.usuarios.TipoUsuario;
 import com.grupo.model.usuarios.Usuario;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +25,8 @@ public class TelaCadUsrController implements Initializable {
     @FXML
     ComboBox<String> CBoxTipoUsr;
     // Pegar do arquivo de tipos de usuario/da pasta com os JSONS
-    private String[] listaTipos = {"USR01", "USR02"};
+    TipoUsuario padrao = new TipoUsuario("usuario padrao", new ArrayList<String>());
+    private String[] listaTipos = {padrao.getNome()};
     
     @FXML
     TextField txtNomeCompleto;
@@ -84,9 +87,9 @@ public class TelaCadUsrController implements Initializable {
     
     @FXML
     private void fechar(ActionEvent event) throws IOException {
-    Stage stage = (Stage) buttonVoltar.getScene().getWindow();
-    // do what you have to do
-    stage.close();
+        Stage stage = (Stage) buttonVoltar.getScene().getWindow();
+        // do what you have to do
+        stage.close();
     }
     
 }
