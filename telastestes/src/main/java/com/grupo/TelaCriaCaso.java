@@ -70,8 +70,10 @@ public class TelaCriaCaso implements Initializable{
         caso.setDescricao(txtDescricao.getText());
         caso.setPrioridade(cBoxPrioridade.getValue());
         caso.setResultadoEsperado(txtResultadoEsperado.getText());
-        caso.setDataLimite(java.sql.Date.valueOf(dataLimite.getValue()));
-        caso.setDataPrevista(java.sql.Date.valueOf(dataPrevista.getValue()));
+        if(dataLimite.getValue() != null)
+            caso.setDataLimite(java.sql.Date.valueOf(dataLimite.getValue()));
+        if(dataPrevista.getValue() != null)
+            caso.setDataPrevista(java.sql.Date.valueOf(dataPrevista.getValue()));
         
         
     }
