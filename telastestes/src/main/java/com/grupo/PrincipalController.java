@@ -291,5 +291,15 @@ public class PrincipalController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    private void switchToAlocarCaso(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("telaAlocarTestePlano.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 622, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
