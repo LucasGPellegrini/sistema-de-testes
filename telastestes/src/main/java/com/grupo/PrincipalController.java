@@ -148,22 +148,22 @@ public class PrincipalController implements Initializable{
 
 
     public void selectItem() {
-	TreeItem<String> item = (TreeItem<String>) equipesList.getSelectionModel().getSelectedItem();
-	if(item != null) {
-        	System.out.println(item.getValue());
-	}
+        TreeItem<String> item = (TreeItem<String>) equipesList.getSelectionModel().getSelectedItem();
+        if(item != null) {
+            // Do code for item select handling here
+        }
     }
-    
+        
     public void selectPlano() {
-	TreeItem<String> item = (TreeItem<String>) planosList.getSelectionModel().getSelectedItem();
-	if(item != null) {
-        	System.out.println(item.getValue());
-	}
+        TreeItem<String> item = (TreeItem<String>) planosList.getSelectionModel().getSelectedItem();
+        if(item != null) {
+            // Do code for plan select handling here
+        }
     }
 
 
     public void getSelectedTest(ActionEvent event) {
-	String teste = pegaTesteBox.getValue();
+        String teste = pegaTesteBox.getValue();
         //TODO: BUSCA O TESTE PELO NOME E RETORNA O OBJETO TESTE
         //Retorna pra quando gerar relatório.
     }
