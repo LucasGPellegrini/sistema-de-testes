@@ -54,7 +54,7 @@ public class CriaTipoController implements Initializable{
         if(!"".equals(this.txtFieldPermissoes.getText()) && !"".equals(this.txtFieldTitulo.getText())){
             String Permissoes = this.txtFieldPermissoes.getText();
             TipoUsuario tipo = new TipoUsuario(this.txtFieldTitulo.getText(),getPermissions(Permissoes));
-            
+                      
             System.out.println("Tipo de Usuário "+tipo.getNome()+" criado!");
             System.out.println("-----Permissões:------");
             for(String permissao: tipo.getPermissoes()) {

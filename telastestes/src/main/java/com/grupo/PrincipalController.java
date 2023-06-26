@@ -281,5 +281,15 @@ public class PrincipalController implements Initializable{
         stage.setScene(scene);
         stage.show();
     }
+    
+    @FXML
+    private void switchToCriaPlano(ActionEvent event) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("telaPlanoTestes.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }
