@@ -164,7 +164,6 @@ public class PrincipalController implements Initializable{
 
     public void getSelectedTest(ActionEvent event) {
 	String teste = pegaTesteBox.getValue();
-	System.out.println(teste);
         //TODO: BUSCA O TESTE PELO NOME E RETORNA O OBJETO TESTE
         //Retorna pra quando gerar relatório.
     }
@@ -287,16 +286,6 @@ public class PrincipalController implements Initializable{
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("telaPlanoTestes.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-    }
-    
-    @FXML
-    private void switchToAlocarCaso(ActionEvent event) throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("telaAlocarTestePlano.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 622, 400);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();

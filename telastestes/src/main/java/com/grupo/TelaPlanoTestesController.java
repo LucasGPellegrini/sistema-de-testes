@@ -46,7 +46,6 @@ public class TelaPlanoTestesController implements Initializable {
     
     public void getSelectedCaso(ActionEvent event) {
 	String caso = casosBox.getValue();
-	System.out.println(caso);
         //TODO: BUSCA O CASO PELO NOME E RETORNA O OBJETO DO CASO
     }
     

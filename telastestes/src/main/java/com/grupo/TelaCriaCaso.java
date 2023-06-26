@@ -65,7 +65,6 @@ public class TelaCriaCaso implements Initializable{
     @FXML
     public void cadastrarCaso(ActionEvent event) throws IOException{
         String titulo = txtTitulo.getText();
-        System.out.println(titulo);
         
         CasoDeTeste caso = new CasoDeTeste();
         caso.setDescricao(txtDescricao.getText());
