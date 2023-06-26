@@ -30,8 +30,7 @@ public class SQLiteDB {
         try {
             if(this.sqliteConn != null) this.sqliteConn.close();
         }
-        catch(SQLException e)
-        {
+        catch(SQLException e) {
             System.err.println(e.getMessage());
         }
     }
@@ -51,18 +50,41 @@ public class SQLiteDB {
                     "login TEXT NOT NULL, " +
                     "senha TEXT NOT NULL)");
 
-            // usuario
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS usuario (" +
-                    "id INTEGER PRIMARY KEY, " +
-                    "FOREIGN KEY(id) REFERENCES cliente(id) )");
-
             // administrador
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS administrador (" +
                     "id INTEGER PRIMARY KEY, " +
                     "FOREIGN KEY(id) REFERENCES cliente(id) )");
 
+            // tipo_usuario
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS tipo_usuario (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "nome TEXT UNIQUE NOT NULL, " +
+                    "permissoes TEXT NOT NULL)");
+
+            // usuario
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS usuario (" +
+                    "id INTEGER PRIMARY KEY, " +
+                    "id_tipo_usuario INTEGER NOT NULL, " +
+                    "FOREIGN KEY(id) REFERENCES cliente(id), " +
+                    "FOREIGN KEY(id_tipo_usuario) REFERENCES tipo_usuario(id) )");
+
+            // creates default user type if not exists and get its id
+            ResultSet rs = statement.executeQuery("SELECT * FROM tipo_usuario AS tu " +
+                    " WHERE tu.nome = \"Padrao\";");
+            Integer defaultUserTypeId = null;
+            if (!rs.next()) {
+                statement.executeUpdate("INSERT INTO tipo_usuario (nome, permissoes) VALUES (" +
+                        "\"Padrao\", " +
+                        "\"criar teste, visualizar teste, editar teste, apagar teste, " +
+                        "criar plano, visualizar plano, editar plano, apagar plano, executar plano\");");
+                defaultUserTypeId = this.getLastAutoIncrementId("tipo_usuario");
+            }
+            else {
+                defaultUserTypeId = rs.getInt("id");
+            }
+
             // creates default user if not exists
-            ResultSet rs = statement.executeQuery("SELECT * FROM cliente AS c JOIN usuario AS u ON c.id = u.id " +
+            rs = statement.executeQuery("SELECT * FROM cliente AS c JOIN usuario AS u ON c.id = u.id " +
                     " WHERE c.nome = \"Usuario\";");
             if (!rs.next()) {
                 statement.executeUpdate("INSERT INTO cliente (nome, login, senha) VALUES (" +
@@ -70,7 +92,8 @@ public class SQLiteDB {
                         "\"usuario@gmail.com\", " +
                         "\"1234\");");
                 Integer lastId = this.getLastAutoIncrementId("cliente");
-                statement.executeUpdate("INSERT INTO usuario (id) VALUES (" + lastId.toString() + ");" );
+                statement.executeUpdate("INSERT INTO usuario (id, id_tipo_usuario) VALUES " +
+                        "(" + lastId.toString() + ", " + defaultUserTypeId.toString() + ");" );
             }
 
             // creates default admin if not exists
@@ -97,11 +120,10 @@ public class SQLiteDB {
             ResultSet rs = this.getByQuery("SELECT seq FROM sqlite_sequence WHERE name=\"" + tableName + "\"");
 
             if (rs.next()) {
-                System.out.println(rs.getInt("seq"));
                 return rs.getInt("seq");
             }
             else{
-                System.out.println("not found");
+                System.out.println("not found incremental id for table " + tableName);
             }
         }
         catch(SQLException e) {

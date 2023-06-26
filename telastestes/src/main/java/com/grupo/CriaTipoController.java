@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.scene.control.TextField;
 
+import static com.grupo.model.usuarios.TipoUsuario.getPermissionsArrayFromString;
+
 public class CriaTipoController implements Initializable{
 
     @FXML
@@ -30,6 +32,8 @@ public class CriaTipoController implements Initializable{
     
     @FXML
     Text txtCadastrado;
+    @FXML
+    Text txtNomeRepetido;
     @FXML
     Text txtCampoVazio;
 
@@ -46,6 +50,7 @@ public class CriaTipoController implements Initializable{
         this.buttonCria.setVisible(true);
         this.buttonVoltar.setVisible(true);
         this.txtCadastrado.setVisible(false);
+        this.txtNomeRepetido.setVisible(false);
         this.txtCampoVazio.setVisible(false);
     }
 
@@ -53,31 +58,35 @@ public class CriaTipoController implements Initializable{
     public void criar(ActionEvent event) throws IOException {
         if(!"".equals(this.txtFieldPermissoes.getText()) && !"".equals(this.txtFieldTitulo.getText())){
             String Permissoes = this.txtFieldPermissoes.getText();
-            TipoUsuario tipo = new TipoUsuario(this.txtFieldTitulo.getText(),getPermissions(Permissoes));
-                      
-            System.out.println("Tipo de Usuário "+tipo.getNome()+" criado!");
-            System.out.println("-----Permissões:------");
-            for(String permissao: tipo.getPermissoes()) {
-                System.out.println("\t"+permissao);
+            TipoUsuario tipo = new TipoUsuario(this.txtFieldTitulo.getText(), getPermissionsArrayFromString(Permissoes));
+
+            String msgErro = tipo.saveToDB();
+
+            if(msgErro == null) {
+                System.out.println("Tipo de Usuário " +tipo.getNome()+ " salvo no banco!");
+                System.out.println("-----Permissões:------");
+                for(String permissao: tipo.getPermissoes()) {
+                    System.out.println("\t"+permissao);
+                }
+
+                this.txtCadastrado.setVisible(true);
+                this.txtNomeRepetido.setVisible(false);
+                this.txtCampoVazio.setVisible(false);
             }
-            
-            this.txtCadastrado.setVisible(true);
-            this.txtCampoVazio.setVisible(false);
+            else{
+                System.out.println("Erro: " + msgErro);
+
+                this.txtCadastrado.setVisible(false);
+                this.txtNomeRepetido.setVisible(true);
+                this.txtCampoVazio.setVisible(false);
+            }
+
         }
         else {
             this.txtCadastrado.setVisible(false);
+            this.txtNomeRepetido.setVisible(false);
             this.txtCampoVazio.setVisible(true);
         }
-    }
-
-    private ArrayList<String> getPermissions(String tokens_String) {
-        ArrayList<String> Permissoes = new ArrayList<>();
-        String[] tokens = tokens_String.split("[,\\s]+");
-        String auxiliar = new String();
-        for (String token : tokens) {
-            Permissoes.add(token);
-        }
-        return Permissoes;
     }
 
     @FXML

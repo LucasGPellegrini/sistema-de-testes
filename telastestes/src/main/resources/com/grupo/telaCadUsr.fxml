@@ -27,6 +27,8 @@
          <TextArea editable="false" layoutX="360.0" layoutY="176.0" prefHeight="60.0" prefWidth="217.0" promptText="Verifique atentamente se todos os dados foram inseridos corretamente!" />
          <Button fx:id="buttonRealizarCadst" layoutX="363.0" layoutY="265.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="26.0" prefWidth="218.0" stylesheets="@styles.css" text="Realizar Cadastro" />
          <Text fx:id="txtInvalido" fill="RED" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Inválidos!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
+         <Text fx:id="txtTipoInvalido" fill="RED" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o tipo do usuário!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
+         <Text fx:id="txtUsuarioRepetido" fill="RED" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do usuário ou email repetidos!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
          <Text fx:id="txtCadastrado" fill="#00ff20" layoutX="361.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro Efetivado!" textAlignment="CENTER" visible="false" wrappingWidth="216.0" />
          <Button fx:id="buttonVoltar" layoutX="58.0" layoutY="345.0" mnemonicParsing="false" onAction="#fechar" text="Voltar" />
          <PasswordField fx:id="txtSenha" layoutX="58.0" layoutY="264.0" prefHeight="26.0" prefWidth="248.0" promptText="S3N#4!@123" />

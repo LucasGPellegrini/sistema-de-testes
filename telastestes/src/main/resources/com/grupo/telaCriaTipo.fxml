@@ -19,6 +19,7 @@
          <TextField fx:id="txtFieldPermissoes" layoutX="196.0" layoutY="217.0" prefHeight="17.0" prefWidth="248.0" promptText="Separado por vírgula" />
          <Text layoutX="82.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nível de permissão" wrappingWidth="104.8125" />
          <Text fx:id="txtCampoVazio" fill="RED" layoutX="215.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preencha Todos os Campos" textAlignment="CENTER" wrappingWidth="216.0" />
+         <Text fx:id="txtNomeRepetido" fill="RED" layoutX="215.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O nome Está Repetido, Escolha Outro Nome" textAlignment="CENTER" wrappingWidth="216.0" />
          <Text fx:id="txtCadastrado" fill="#00ff20" layoutX="215.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro Efetivado!" textAlignment="CENTER" wrappingWidth="216.0" />
          <Button fx:id="buttonVoltar" layoutX="58.0" layoutY="345.0" mnemonicParsing="false" onAction="#fechar" onMouseClicked="#fechar" text="Voltar" />
          <Button fx:id="buttonCria" layoutX="296.0" layoutY="283.0" mnemonicParsing="false" onAction="#criar" text="Criar" />

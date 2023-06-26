@@ -10,11 +10,19 @@ public class Usuario extends Cliente{
     
     private TipoUsuario tipo;
     private ArrayList<Integer> projetos;
-    
-    public Usuario(Integer id, String nome, String login, String senha/*, TipoUsuario tipo*/) {
+
+    // Constructor with id
+    public Usuario(Integer id, String nome, String login, String senha) {
         super(id, nome, login, senha);
         this.projetos = new ArrayList<>();
-        //this.tipo = tipo
+        this.tipo = tipo;
+    }
+
+    // Constructor without id
+    public Usuario(String nome, String login, String senha) {
+        super(nome, login, senha);
+        this.projetos = new ArrayList<>();
+        this.tipo = tipo;
     }
     
     public ArrayList<Integer> getProjetos() {return this.projetos;}

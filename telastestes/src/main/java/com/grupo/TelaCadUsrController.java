@@ -20,13 +20,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import static com.grupo.model.usuarios.TipoUsuario.getAllUserTypesFromDB;
+
 
 public class TelaCadUsrController implements Initializable {
     @FXML
     ComboBox<String> CBoxTipoUsr;
-    // Pegar do arquivo de tipos de usuario/da pasta com os JSONS
-    TipoUsuario padrao = new TipoUsuario("usuario padrao", new ArrayList<String>());
-    private String[] listaTipos = {padrao.getNome()};
+
+    ArrayList<TipoUsuario> listaTipos;
+
+    Integer tipoSelecionado = -1;
     
     @FXML
     TextField txtNomeCompleto;
@@ -35,9 +38,16 @@ public class TelaCadUsrController implements Initializable {
     
     @FXML
     PasswordField txtSenha;
-    
+
     @FXML
     Text txtInvalido;
+
+    @FXML
+    Text txtTipoInvalido;
+
+    @FXML
+    Text txtUsuarioRepetido;
+
     @FXML
     Text txtCadastrado;
     
@@ -53,18 +63,32 @@ public class TelaCadUsrController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        CBoxTipoUsr.getItems().addAll(listaTipos);
+
+        this.listaTipos = getAllUserTypesFromDB();
+        ArrayList<String> listaNomesTipoU = new ArrayList<String>();
+
+        for(TipoUsuario tipoU: this.listaTipos){
+            listaNomesTipoU.add(tipoU.getNome());
+        }
+
+        CBoxTipoUsr.getItems().addAll(listaNomesTipoU);
 	    CBoxTipoUsr.setOnAction(this::getSelectedTipoUsr);
         txtInvalido.setVisible(false);
+        txtTipoInvalido.setVisible(false);
+        txtUsuarioRepetido.setVisible(false);
         txtCadastrado.setVisible(false);
     }    
     
     
     public void getSelectedTipoUsr(ActionEvent event) {
-	String teste = CBoxTipoUsr.getValue();
-	System.out.println(teste);
-        //TODO: BUSCA O TIPO PELO NOME E RETORNA O OBJETO
-        //Deve dar pra mostar as permissoes no campo de texto quando selecionar.
+
+        String nomeTipoSelecionado = CBoxTipoUsr.getValue();
+
+        for(TipoUsuario tipo: this.listaTipos){
+            if(nomeTipoSelecionado.equals(tipo.getNome())){
+                this.tipoSelecionado = tipo.getId();
+            }
+        }
     }
     
     @FXML
@@ -72,24 +96,42 @@ public class TelaCadUsrController implements Initializable {
         String nome  = txtNomeCompleto.getText();
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
-        
-        if ("".equals(nome) || "".equals(login) || "".equals(senha)) {
+
+        if (this.tipoSelecionado == -1) {
+            txtInvalido.setVisible(false);
+            txtTipoInvalido.setVisible(true);
+            txtUsuarioRepetido.setVisible(false);
+            txtCadastrado.setVisible(false);
+        }
+        else if ("".equals(nome) || "".equals(login) || "".equals(senha)) {
             txtInvalido.setVisible(true);
+            txtTipoInvalido.setVisible(false);
+            txtUsuarioRepetido.setVisible(false);
             txtCadastrado.setVisible(false);
         }
         else {
-            // atenção incompleto aqui falta colocar no bd
-            Usuario usuario = new Usuario(1, nome, login, senha);
-            txtCadastrado.setVisible(true);
-            txtInvalido.setVisible(false);
+            // saves to db
+            Usuario usuario = new Usuario(nome, login, senha);
+            String errorMsg = usuario.saveToDB(true, false, this.tipoSelecionado);
+
+            if(errorMsg != null && errorMsg.equals("Cliente já existe")){
+                txtUsuarioRepetido.setVisible(true);
+            }
+            else if(errorMsg != null){
+                System.out.println("Erro: " + errorMsg);
+            }
+            else{
+                txtCadastrado.setVisible(true);
+                txtTipoInvalido.setVisible(false);
+                txtUsuarioRepetido.setVisible(false);
+                txtInvalido.setVisible(false);
+            }
         }
     }
     
     @FXML
     private void fechar(ActionEvent event) throws IOException {
         Stage stage = (Stage) buttonVoltar.getScene().getWindow();
-        // do what you have to do
         stage.close();
     }
-    
 }

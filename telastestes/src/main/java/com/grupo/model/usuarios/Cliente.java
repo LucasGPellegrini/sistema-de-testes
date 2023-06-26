@@ -15,9 +15,16 @@ public abstract class Cliente {
     private String login;
     private String senha;
     
-    // Construtor
+    // Construtor with id
     public Cliente(Integer id, String nome, String login, String senha) {
         this.id = id;
+        this.nomeCompleto = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+
+    // Construtor without id
+    public Cliente(String nome, String login, String senha) {
         this.nomeCompleto = nome;
         this.login = login;
         this.senha = senha;
@@ -100,7 +107,7 @@ public abstract class Cliente {
     }
 
     // save a user or adm client or returns a String if has creation errors
-    public String saveToDB(boolean isUser, boolean isAdm){
+    public String saveToDB(boolean isUser, boolean isAdm, Integer idUserType){
 
         SQLiteDB sqliteConn = new SQLiteDB();
 
@@ -113,25 +120,29 @@ public abstract class Cliente {
             if (rs.next()) {
                 return "Cliente já existe";
             }
+
+            // inserts client
+            sqliteConn.update("INSERT INTO cliente (nome, login, senha) VALUES (" +
+                    "\"" + this.getNomeCompleto() + "\", " +
+                    "\"" + this.getLogin() + "\", " +
+                    "\"" + this.getSenha() + "\");");
+            // get last client autoincrement
+            Integer lastClientId = sqliteConn.getLastAutoIncrementId("cliente");
+
+            // inserts user or/and admin (user has userType)
+            if(isUser){
+                sqliteConn.update("INSERT INTO usuario (id, id_tipo_usuario) VALUES (" +
+                        lastClientId.toString() + ", " +
+                        idUserType.toString() +
+                        ");" );
+            }
+            if(isAdm){
+                sqliteConn.update("INSERT INTO administrador (id) VALUES (" + lastClientId.toString() + ");" );
+            }
         }
         catch(SQLException e) {
             System.err.println(e.getMessage());
-        }
-
-        // inserts client
-        sqliteConn.update("INSERT INTO cliente (nome, login, senha) VALUES (" +
-                "\"" + this.getNomeCompleto() + "\", " +
-                "\"" + this.getLogin() + "\", " +
-                "\"" + this.getSenha() + "\");");
-        // get last client autoincrement
-        Integer lastClientId = sqliteConn.getLastAutoIncrementId("cliente");
-
-        // inserts user or/and admin
-        if(isUser){
-            sqliteConn.update("INSERT INTO usuario (id) VALUES (" + lastClientId.toString() + ");" );
-        }
-        if(isAdm){
-            sqliteConn.update("INSERT INTO administrador (id) VALUES (" + lastClientId.toString() + ");" );
+            return e.getMessage();
         }
 
         sqliteConn.closeConnection();
